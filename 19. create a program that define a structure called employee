@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_EMPLOYEES 100
+
+struct employee {
+    char name[100];
+    int age;
+    float salary;
+    char department[100];
+};
+
+void print_sales_employees(struct employee employees[], int num_employees) {
+    for (int i = 0; i < num_employees; i++) {
+        if (strcmp(employees[i].department, "Sales") == 0 && employees[i].salary > 50000.0) {
+            printf("Name: %s\nAge: %d\nSalary: %.2f\nDepartment: %s\n", 
+                employees[i].name, employees[i].age, employees[i].salary, employees[i].department);
+        }
+    }
+}
+
+int main() {
+    struct employee employees[MAX_EMPLOYEES] = {
+        {"John Doe", 25, 60000.0, "Sales"},
+        {"Jane Smith", 30, 45000.0, "HR"},
+        {"Bob Johnson", 40, 70000.0, "Sales"},
+        {"Alice Lee", 35, 55000.0, "Sales"},
+        {"Tom Wilson", 28, 52000.0, "IT"}
+    };
+    int num_employees = 5;
+    
+    print_sales_employees(employees, num_employees);
+    
+    return 0;
+}
