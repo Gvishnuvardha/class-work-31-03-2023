@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+union my_union {
+    int integer;
+    float floating_point;
+};
+
+int main() {
+    union my_union my_array[5];
+    int i;
+    float total = 0;
+
+    // Prompt user to enter values for each union
+    for (i = 0; i < 5; i++) {
+        printf("Enter an integer for union %d: ", i+1);
+        scanf("%d", &my_array[i].integer);
+        printf("Enter a floating-point number for union %d: ", i+1);
+        scanf("%f", &my_array[i].floating_point);
+    }
+
+    // Calculate the total of all the values in the unions
+    for (i = 0; i < 5; i++) {
+        total += (float) my_array[i].integer + my_array[i].floating_point;
+    }
+
+    // Print out the total
+    printf("The total of all the values in the unions is %.2f\n", total);
+
+    return 0;
+}
