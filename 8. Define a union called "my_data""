@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Define the union
+union my_data {
+  int integer;
+  float floating_point;
+  char string[100];
+};
+
+int main() {
+  union my_data data; // Declare a variable of the union type
+  char input[100];
+
+  // Prompt the user to enter a value
+  printf("Enter a value: ");
+  fgets(input, 100, stdin);
+  input[strcspn(input, "\n")] = 0; // Remove the newline character from input
+
+  // Check whether the input is an integer
+  char *endptr;
+  int value = strtol(input, &endptr, 10);
+  if (*endptr == '\0') { // The entire input was converted to an integer
+    data.integer = value;
+    printf("%d was stored as an integer.\n", data.integer);
+  } else {
+    // Check whether the input is a floating-point number
+    float value = strtof(input, &endptr);
+    if (*endptr == '\0') { // The entire input was converted to a float
+      data.floating_point = value;
+      printf("%f was stored as a floating-point number.\n", data.floating_point);
+    } else {
+      // The input is a string
+      strcpy(data.string, input);
+      printf("%s was stored as a string.\n", data.string);
+    }
+  }
+
+  return 0;
+}
