@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+struct person {
+  char name[50];
+  int age;
+  float height;
+};
+
+int main() {
+  struct person p;
+  
+  // assign values to the person's fields
+  strcpy(p.name, "John Smith");
+  p.age = 30;
+  p.height = 5.8;
+  
+  // print the person's information to the console
+  printf("Name: %s\n", p.name);
+  printf("Age: %d\n", p.age);
+  printf("Height: %.1f\n", p.height);
+  
+  return 0;
+}
