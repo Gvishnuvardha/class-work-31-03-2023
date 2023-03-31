@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+// Define a struct for the product
+struct Product {
+    char name[100];
+    union {
+        float f_price;
+        int i_price;
+    } price;
+    int quantity;
+};
+
+int main() {
+    // Create a variable for the product
+    struct Product product;
+
+    // Prompt the user to enter the product information
+    printf("Enter the product name: ");
+    scanf("%s", product.name);
+
+    printf("Enter the product price: ");
+    if (scanf("%f", &product.price.f_price) != 1) {
+        scanf("%d", &product.price.i_price);
+    }
+
+    printf("Enter the product quantity: ");
+    scanf("%d", &product.quantity);
+
+    // Calculate the total cost of the product
+    float total_cost;
+    if (product.price.f_price) {
+        total_cost = product.price.f_price * product.quantity;
+    } else {
+        total_cost = (float) product.price.i_price * product.quantity;
+    }
+
+    // Display the total cost of the product
+    printf("Total cost of %s: $%.2f\n", product.name, total_cost);
+
+    return 0;
+}
