@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+union my_data {
+  int integer;
+  float floating_point;
+};
+
+int main() {
+  union my_data data;
+  float input;
+
+  printf("Enter a number: ");
+  scanf("%f", &input);
+
+  if ((int)input == input) {
+    data.integer = (int)input;
+    printf("You entered an integer: %d\n", data.integer);
+  } else {
+    data.floating_point = input;
+    printf("You entered a floating-point number: %f\n", data.floating_point);
+  }
+
+  return 0;
+}
+In this program, we first declare a union called "my_data" with two fields: "integer" of type "int" and "floating_point" of type "float". We then declare a float variable called "input" to read in the user's input.
+
+Next, we prompt the user to enter a number using the "printf" and "scanf" functions. We then use a conditional statement to check whether the input value is an integer or a floating-point number. If the input value is an integer, we convert it to an integer using the "(int)" cast operator, store it in the "integer" field of the union, and print out a message saying that an integer was entered. If the input value is not an integer, we store it in the "floating_point" field of the union, and print out a message saying that a floating-point number was entered.
+
+Finally, we return 0 to indicate successful completion of the program.
+
+
+
+
+
